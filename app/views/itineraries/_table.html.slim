@@ -6,9 +6,12 @@
           th = t('helpers.actions')
         - else
           th = 'Trip Details'
-          th = Itinerary.human_attribute_name(:leave_date)
-          th = Itinerary.human_attribute_name(:end_address)
-          th = Itinerary.human_attribute_name(:start_address)
+          th = 'Date'
+          th = 'Resort'
+          th = 'Pick Up Location'
+          / th = Itinerary.human_attribute_name(:leave_date)
+          / th = Itinerary.human_attribute_name(:end_address)
+          / th = Itinerary.human_attribute_name(:start_address)
         th
           span.d-block.d-sm-none
             span.fas.fa-info-circle data-toggle='tooltip' title=t('itineraries.common.features')
