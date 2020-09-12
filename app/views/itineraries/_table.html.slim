@@ -3,6 +3,7 @@
   table.table.table-itinerary
     thead
     tr
+      th = "Trip Details"
         - if edit
           th = t('helpers.actions')
         - else
@@ -17,6 +18,7 @@
     tbody
       - itineraries.each do |itinerary|
         tr.vertical-align-middle
+          td = link_to edit_itinerary_path(itinerary), class: 'btn btn-sm btn-secondary mr-2'
           - if edit
             td
               = link_to edit_itinerary_path(itinerary), class: 'btn btn-sm btn-secondary mr-2' do
