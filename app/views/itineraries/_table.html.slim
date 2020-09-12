@@ -5,8 +5,8 @@
           th = "Date"
           th = “Resort”
           th = "Pick Up Location"
-          th = User.model_name.human
           th = "Features"
+          th = User.model_name.human
     tbody
       - itineraries.each do |itinerary|
         tr.vertical-align-middle
@@ -22,7 +22,6 @@
             td = l(itinerary.leave_date.in_time_zone, format: :short)
           td = link_to itinerary.end_address, itinerary_path(itinerary)
           td = link_to itinerary.start_address, itinerary_path(itinerary)
-            td = link_to itinerary.user, user_path(itinerary.user)
           td
             .feature-icons
               - if itinerary.pink?
@@ -35,3 +34,4 @@
                 span.fas.fa-paw.feature-icon data-toggle='tooltip' title=Itinerary.human_attribute_name(:pets_allowed)
               - if itinerary.smoking_allowed?
                 span.fas.fa-smoking.feature-icon data-toggle='tooltip' title=Itinerary.human_attribute_name(:smoking_allowed)
+            td = link_to itinerary.user, user_path(itinerary.user)
