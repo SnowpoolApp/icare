@@ -3,10 +3,10 @@
   table.table.table-itinerary
     thead
     tr
-      th = "Trip Details"
         - if edit
           th = t('helpers.actions')
         - else
+          th = "Trip Details"
           th = Itinerary.human_attribute_name(:leave_date)
           th = Itinerary.human_attribute_name(:end_address)
           th = Itinerary.human_attribute_name(:start_address)
@@ -18,7 +18,9 @@
     tbody
       - itineraries.each do |itinerary|
         tr.vertical-align-middle
-          td = link_to edit_itinerary_path(itinerary), class: 'btn btn-sm btn-secondary mr-2'
+            td
+              = link_to edit_itinerary_path(itinerary), class: 'btn btn-sm btn-secondary mr-2' do
+                span.fas.fa-pencil-alt<>
           - if edit
             td
               = link_to edit_itinerary_path(itinerary), class: 'btn btn-sm btn-secondary mr-2' do
