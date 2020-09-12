@@ -2,17 +2,17 @@
   table.table.table-itinerary
     thead
       tr
+        - if edit
+          th = t('helpers.actions')
+        - else
+          th = User.model_name.human
+          th = Itinerary.human_attribute_name(:leave_date)
         th = Itinerary.human_attribute_name(:start_address)
         th = Itinerary.human_attribute_name(:end_address)
         th
           span.d-block.d-sm-none
             span.fas.fa-info-circle data-toggle='tooltip' title=t('itineraries.common.features')
           span.d-none.d-sm-block = t('itineraries.common.features')
-        - if edit
-          th = t('helpers.actions')
-        - else
-          th = User.model_name.human
-          th = Itinerary.human_attribute_name(:leave_date)
     tbody
       - itineraries.each do |itinerary|
         tr.vertical-align-middle
