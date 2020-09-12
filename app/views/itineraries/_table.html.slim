@@ -1,4 +1,3 @@
-
 .table-responsive
   table.table.table-itinerary
     thead
@@ -6,7 +5,7 @@
         - if edit
           th = t('helpers.actions')
         - else
-          th = "Trip Details"
+          th = 'Trip Details'
           th = Itinerary.human_attribute_name(:leave_date)
           th = Itinerary.human_attribute_name(:end_address)
           th = Itinerary.human_attribute_name(:start_address)
@@ -18,9 +17,6 @@
     tbody
       - itineraries.each do |itinerary|
         tr.vertical-align-middle
-            td
-              = link_to edit_itinerary_path(itinerary), class: 'btn btn-sm btn-secondary mr-2' do
-                span.fas.fa-pencil-alt<>
           - if edit
             td
               = link_to edit_itinerary_path(itinerary), class: 'btn btn-sm btn-secondary mr-2' do
@@ -30,6 +26,8 @@
                 span.fas.fa-times<>
                 = t('helpers.links.destroy')
           - else
+            td = link_to edit_itinerary_path(itinerary), class: 'btn btn-sm btn-secondary mr-2' do
+                span.fas.fa-pencil-alt<>
             td = l(itinerary.leave_date.in_time_zone, format: :short)
             td = link_to itinerary.end_address, itinerary_path(itinerary)
             td = link_to itinerary.start_address, itinerary_path(itinerary)
