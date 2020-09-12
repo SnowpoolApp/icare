@@ -2,17 +2,11 @@
   table.table.table-itinerary
     thead
       tr
-        - if edit
-          th = t('helpers.actions')
-        - else
+          th = "Date"
+          th = “Resort”
+          th = "Pick Up Location"
           th = User.model_name.human
-          th = Itinerary.human_attribute_name(:leave_date)
-        th = Itinerary.human_attribute_name(:start_address)
-        th = Itinerary.human_attribute_name(:end_address)
-        th
-          span.d-block.d-sm-none
-            span.fas.fa-info-circle data-toggle='tooltip' title=t('itineraries.common.features')
-          span.d-none.d-sm-block = t('itineraries.common.features')
+          th = "Features"
     tbody
       - itineraries.each do |itinerary|
         tr.vertical-align-middle
@@ -25,10 +19,10 @@
                 span.fas.fa-times<>
                 = t('helpers.links.destroy')
           - else
-            td = link_to itinerary.user, user_path(itinerary.user)
             td = l(itinerary.leave_date.in_time_zone, format: :short)
-          td = link_to itinerary.start_address, itinerary_path(itinerary)
           td = link_to itinerary.end_address, itinerary_path(itinerary)
+          td = link_to itinerary.start_address, itinerary_path(itinerary)
+            td = link_to itinerary.user, user_path(itinerary.user)
           td
             .feature-icons
               - if itinerary.pink?
